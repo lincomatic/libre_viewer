@@ -8,8 +8,8 @@ import plotly.graph_objects as go
 
 st.set_page_config(
     page_title='Freestyle Libre CSV Viewer',
-    layout='centered'
-#        layout='wide'
+#    layout='centered'
+        layout='wide'
 )
 
 file = st.file_uploader(label="Upload CSV", type='csv')
@@ -72,7 +72,7 @@ if file is not None:
         title="Time vs Glucose mg/dL"
     )
 
-    st.plotly_chart(fig)
+    st.plotly_chart(fig,use_container_width=True)
 
     with st.expander('Note data (Expand to show)'):
         st.write(filldata)
