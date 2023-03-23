@@ -7,8 +7,9 @@ import pandas as pd
 import plotly.graph_objects as go
 
 st.set_page_config(
-#    layout='centered'
-        layout='wide'
+    page_title='Freestyle Libre CSV Viewer',
+    layout='centered'
+#        layout='wide'
 )
 
 file = st.file_uploader(label="Upload CSV", type='csv')
@@ -66,7 +67,6 @@ if file is not None:
 
     # format plot
     fig.update_layout(
-        width=2000,
         xaxis_title="Time",
         yaxis_title="Blood Glucose mg/dL",
         title="Time vs Glucose mg/dL"
