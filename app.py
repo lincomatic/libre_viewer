@@ -31,13 +31,18 @@ if file is not None:
         label='**Show Notes on graph**', help='Check this to overlay note data on the graph!')
 
     fig = go.Figure()
-
+    acolor = '#f0a0a0'
+    lpos = 70
+    fig.add_hline(y=lpos,line=dict(color=acolor,width=1),annotation_text=lpos,annotation_position="right")
+    hpos = 140
+    fig.add_hline(y=hpos,line=dict(color=acolor,width=1),annotation_text=hpos,annotation_position="right")
+    
     # plot historic glucose
     fig.add_trace(go.Scatter(x=df['Device Timestamp'], y=df['Historic Glucose mg/dL'],
                              mode='lines+markers',
                              name='Historic',
                              marker={
-                                 'color': 'blue'
+                                 'color': '#0000e0'
     }))
 
     # plot scan glucose
@@ -45,7 +50,7 @@ if file is not None:
                              mode='markers',
                              name='Scan',
                              marker={
-                                 'color': 'red'
+                                 'color': '#f00000'
     }))
 
     if overlay_notes:
@@ -67,6 +72,7 @@ if file is not None:
 
     # format plot
     fig.update_layout(
+        height=600,
         xaxis_title="Time",
         yaxis_title="Blood Glucose mg/dL",
         title="Time vs Glucose mg/dL"
