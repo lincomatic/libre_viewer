@@ -22,7 +22,8 @@ if file is not None:
     df['Device Timestamp'] = pd.to_datetime(df['Device Timestamp'])
     
     filldata = pd.DataFrame(df[['Device Timestamp', 'Notes']].value_counts()).reset_index()
-    filldata.drop(columns=[0], inplace=True)
+    #filldata.drop(filldata.columns[0], inplace=True)
+    print(filldata.columns)
     filldata.sort_values(by='Device Timestamp', inplace=True)
     df = df.merge(filldata, on='Device Timestamp', how='left', suffixes=['_x', ''])
     df.drop(columns=['Notes_x'], inplace=True)
